@@ -1,0 +1,6 @@
+MyPair [offset=377, chars=m}HI:Pu]
+MyPair [offset=405, chars=DO YOU HAVE LOWERCASE DISPLAY (Y/N): ]
+MyPair [offset=449, chars=m}HPu]
+MyPair [offset=457, chars=BLOADOBJ.APWRT][D,A$2300]
+MyPair [offset=523, chars=m}HPu]
+MyPair [offset=653, chars=ENABLE CORVUS IN SLOT 6 (Y/N) ?]

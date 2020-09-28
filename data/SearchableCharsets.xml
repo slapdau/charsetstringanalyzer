@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file provides configuration for the Charset based string searcher.
+
+The file lists character sets that a user may select as byte encodings
+used when searching a program for strings. The user may select any number
+of encodings. During a string analysis, the program will be selected
+for all strings in any of the encodings.
+
+A copy of this file may be located as data/SearchableCharsets.xml in
+any module. All copies found will be combined into an overall configuration.
+
+If a character set is listed in any file at least once, it is available for
+selection as a search character set. If a character set is marked as
+enabledByDefault in any file at least once, it is selected as a search
+character set by default. Only character sets that are not marked as
+enabledByDefault in any file will not be selected by default.
+
+Only character sets known to ghidra.program.model.data.CharsetInfo can
+be enabled. The set of known character sets can be extended by creating
+a new subclass of java.nio.charset.Charset (with matching
+java.nio.charset.spi.CharsetProvider), and/or adding to charset_info.xml.
+
+Since adding a new character set to Ghidra will require packaging it in a
+module, the module may containg its own copy of data/SearchableCharsets.xml
+to make the new character set searchable.
+
+Unknown character set declarations will be discarded.
+
+Since character sets that have byte order markers, such as UTF-16 and
+UTF-32, do not behave well with this analyser, they are also discarded.
+However associated character sets that have a defined byte ordering and
+do not require a leading byte order marker are permitted. For example,
+UTF-16BE and UTF-32LE are permissible.
+-->
+<charsets>
+	<charset enabledByDefault="true">US-ASCII</charset>
+	<charset>UTF-8</charset>
+	<charset>UTF-16BE</charset>
+	<charset>UTF-16LE</charset>
+	<charset>UTF-32BE</charset>
+	<charset>UTF-32LE</charset>
+</charsets>
