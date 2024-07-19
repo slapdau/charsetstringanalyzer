@@ -32,13 +32,13 @@ public class SearchCharsets implements CustomOption {
     }
 
     @Override
-    public void readState(SaveState saveState) {
-        charsets = saveState.getStrings(STATE_NAME, charsets);
+    public void readState(GProperties properties) {
+        charsets = properties.getStrings(STATE_NAME, charsets);
     }
-
+    
     @Override
-    public void writeState(SaveState saveState) {
-        saveState.putStrings(STATE_NAME, charsets);
+    public void writeState(GProperties properties) {
+    	properties.putStrings(STATE_NAME, charsets);
     }
 
     public String[] getCharsets() {

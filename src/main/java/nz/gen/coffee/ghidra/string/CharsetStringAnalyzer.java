@@ -368,7 +368,7 @@ public class CharsetStringAnalyzer extends AbstractAnalyzer {
 		options.registerOption(ALLOW_STRING_CREATION_WITH_MIDDLE_REF_NAME, ALLOW_STRING_CREATION_WITH_MIDDLE_REF_DEFAULT, null, ALLOW_STRING_CREATION_WITH_MIDDLE_REF_DESC);
 		options.registerOption(ALLOW_STRING_CREATION_WITH_EXISTING_SUBSTR_NAME, ALLOW_STRING_CREATION_WITH_EXISTING_SUBSTR_DEFAULT, null, ALLOW_STRING_CREATION_WITH_EXISTING_SUBSTR_DESC);
 		options.registerOption(SEARCH_ONLY_ACCESSIBLE_MEM_BLOCKS_NAME, SEARCH_ONLY_ACCESSIBLE_MEM_BLOCKS_DEFAULT, null, SEARCH_ONLY_ACCESSIBLE_MEM_BLOCKS_DESC);
-		options.registerOption(SEARCHABLE_CHARSETS_NAME, OptionType.CUSTOM_TYPE, searchedCharsetsDefault, null, SEARCHABLE_CHARSETS_DESC, new SearchCharsetsEditor(searchableCharsets));
+		options.registerOption(SEARCHABLE_CHARSETS_NAME, OptionType.CUSTOM_TYPE, searchedCharsetsDefault, null, SEARCHABLE_CHARSETS_DESC, () -> new SearchCharsetsEditor(searchableCharsets));
 	}
 
 	@Override
@@ -443,7 +443,7 @@ public class CharsetStringAnalyzer extends AbstractAnalyzer {
 
 			for (AddressSpace space : addressSpaces) {
 
-				monitor.checkCanceled();
+				monitor.checkCancelled();
 
 				// Portion of current address space that intersects with initialized memory
 				AddressSet intersecting =
@@ -472,7 +472,7 @@ public class CharsetStringAnalyzer extends AbstractAnalyzer {
 
 		AddressSet addresses = new AddressSet();
 		for (MemoryBlock memBlock : blocks) {
-			if (memBlock.getPermissions() > 0) {
+			if (memBlock.getFlags() > 0) {
 				addresses = addresses.union(new AddressSet(memBlock.getStart(), memBlock.getEnd()));
 			}
 		}
